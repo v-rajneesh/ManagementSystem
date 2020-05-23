@@ -1,0 +1,44 @@
+.login {
+  background-size: cover;
+  position: relative;
+}
+
+.loginform {
+  max-width: 320px;
+  width: 90%;
+  background-color: #1e2833;
+  padding: 40px;
+
+  position: fixed;
+  top: 30%;
+  left: 15%;
+  color: #ffff;
+  border-radius: 4px;
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
+}
+
+.illustration {
+  text-align: center;
+  padding: 15px 0 20px;
+  font-size: 100px;
+  columns: #2980ef;
+}
+
+.form-control {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #434a52;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+  color: inherit;
+}
+
+.forgot {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  color: #6f7a85;
+  opacity: 0.9;
+  text-decoration: none;
+}
