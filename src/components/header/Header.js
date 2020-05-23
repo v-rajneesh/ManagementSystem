@@ -33,12 +33,17 @@ const PublicHeader = ({ authenticated }) => {
           <NavLink to="/home" activeClassName="active">
             Home
           </NavLink>
-          <NavLink to="/aboutus" activeClassName="active">
-            About Us
-          </NavLink>
-          <NavLink to="/contactus" activeClassName="active">
-            Contact Us
-          </NavLink>
+
+          {!authenticated && (
+            <React.Fragment>
+              <NavLink to="/aboutus" activeClassName="active">
+                About Us
+              </NavLink>
+              <NavLink to="/contactus" activeClassName="active">
+                Contact Us
+              </NavLink>
+            </React.Fragment>
+          )}
           {authenticated ? (
             <NavLink to="/logout" activeClassName="active">
               Logout

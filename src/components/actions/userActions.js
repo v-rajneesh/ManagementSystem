@@ -3,7 +3,7 @@ import React from "react";
 export const addUserToken = (token_id, setTime = true) => {
   let now = new Date();
   let time = now.getTime();
-  let expireTime = time + 100000;
+  let expireTime = time + 20000;
   now.setTime(expireTime);
   console.log(token_id);
   document.cookie = "userInfo=" + token_id + ";expires=" + now.toUTCString();

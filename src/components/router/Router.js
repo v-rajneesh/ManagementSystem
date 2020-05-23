@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useDebugValue } from "react";
 import { BrowserRouter, Redirect, Switch, Route } from "react-router-dom";
 import PublicHeader from "../header/Header";
 import publicRoutes, { privateRoutes } from "./PublicRoutes";
@@ -28,16 +28,22 @@ const PrivateRoutes = () => (
   </div>
 );
 
-const Routes = ({ validated, dispatch }) => {
+const Routes = ({ vallidated, dispatch }) => {
   const [authenticated, setAuth] = useState(false);
 
   useEffect(() => {
-    const validated = validateCookie();
-    if (validated) {
+    if (!vallidated) {
+      const validated = validateCookie();
+      if (validated) {
+        setAuth(true);
+        dispatch(addUserToken(addUserFromCookie()));
+      }
+    } else {
+      console.log("here inside");
       setAuth(true);
-      dispatch(addUserToken(addUserFromCookie()));
     }
-  }, []);
+  }, [vallidated]);
+
   return (
     <BrowserRouter>
       <PublicHeader authenticated={authenticated} />
@@ -47,7 +53,7 @@ const Routes = ({ validated, dispatch }) => {
 };
 
 const mapStateToProps = (state) => ({
-  validated: state.userReducer.userToken.length > 0,
+  vallidated: state.userReducer.userToken.length > 0,
 });
 
 export default connect(mapStateToProps)(Routes);

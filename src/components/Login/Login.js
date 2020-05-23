@@ -4,7 +4,7 @@ import { validateUser, validatePass } from "../service/SSO_Service";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { addUserToken } from "../actions/userActions";
-import { validateCookie } from "../service/CookieService";
+import { validateCookie, addUserFromCookie } from "../service/CookieService";
 
 const Login = (props) => {
   const history = useHistory();
@@ -13,8 +13,6 @@ const Login = (props) => {
     const validated = validateCookie();
     if (validated) {
       props.dispatch(addUserToken(addUserFromCookie()));
-    }
-    if (validated) {
       history.push("/Home");
     }
   }, []);
